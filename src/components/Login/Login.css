@@ -1,0 +1,40 @@
+.loginform {
+  background-image: url("../../imgs/bgdiv.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+.card-login {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 75%;
+  width: 35%;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  margin: auto;
+}
+
+.log-inp {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.btnLogin {
+  border-top-left-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+}
+.inpLogin {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  text-align: center;
+}
+.aLogin {
+  font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+  .card-login {
+    width: 60%;
+    height: 70%;
+  }
+}
