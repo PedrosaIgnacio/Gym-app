@@ -26,7 +26,7 @@ export const SidebarData: ISidebarDataItem[] = [
     iconOpened: <RiArrowUpSFill />,
   },
   {
-    title: "Mis Planes",
+    title: "Cuenta",
     path: "/misplanes",
     icon: <FaUserAlt style={{ height: "24px", width: "24px" }} />,
     iconClosed: <RiArrowDownSFill />,
