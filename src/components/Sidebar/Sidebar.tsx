@@ -1,81 +1,79 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SidebarData } from "./SidebarData";
 import { Link, NavLink } from "react-router-dom";
-import "./Sidebar.css"
-import "react-pro-sidebar/dist/css/styles.css";
+import "./Sidebar.css";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
+import UserContext from "../UserContext/UserContext";
+import { Collapse, Fade } from "react-bootstrap";
+
 export const Sidebar = () => {
+  const user = useContext(UserContext);
 
-  const logo = require("../../imgs/images.jpg")
+  const navListStyle = ({ isActive }: any) => {
+    return {
+      transform: isActive ? "scale(1.1)" : "scale(1)",
+      transition: isActive
+        ? "width 4s ease-in-out 1s"
+        : "width 4s ease-in-out 1s",
+      width: isActive ? "15rem" : "",
+      borderRadius: isActive ? "25px 25px 25px 25px" : "25px 25px 25px 0px",
+    };
+  };
 
-  const [test, setTest] = useState<string>("");
-
-  const activeItems = () => {
-    let ulContainer = document.getElementById("ulCont");
-    let listANav = ulContainer?.getElementsByClassName("invert-border-radius")
-    if (listANav !== undefined) {
-      for (let i = 0; i < listANav.length; i++) {
-        listANav[i].addEventListener("click", () => {
-
-          let current = document.getElementsByClassName("active");
-          if (current.length > 0) {
-            current[0].className = current[0].className.replace("active", "");
-          }
-          current[0].className += "active";
-        })
-      }
-    }
-  }
-
-  console.log(test);
+  const [open, setOpen] = useState(true);
 
   return (
-    <>
-      <div className="bg-dark" style={{ height: "10vh", width: "100vw" }}>
-        <a href="#" className="text-decoration-none text-white">
-          {/* ELEMENTO CON FONDO NEGRO ARRIBA DE SIDEBAR */}
+    <div className="d-flex">
+      <Collapse in={open} dimension={"width"}>
+        <div id="example-collapse-text">
+          <nav className="d-flex justify-content-center bg-dark navvbar">
+            <ul className="navbar-nav" id="ulCont">
+              <div className="nav-item brand d-flex justify-content-center align-items-center">
+                <h1 className="text-white">Logo</h1>
+              </div>
+              {SidebarData.map((e, index) => {
+                return (
+                  <li className="nav-item" key={e.title}>
+                    <NavLink
+                      style={navListStyle}
+                      to={e.path}
+                      id={e.title}
+                      className="d-flex text-decoration-none bg-white p-3 m-3 text-dark"
+                    >
+                      <div className="divIcon">{e.icon}</div>
+                      {e.title}
+                    </NavLink>
+                  </li>
+                );
+              })}
+              <div className="nav-item mt-auto d-flex justify-content-center">
+                <NavLink
+                  to="/"
+                  className="d-flex bg-white p-3 m-3 rounded-pill text-decoration-none"
+                  onClick={() => {
+                    user.logout();
+                  }}
+                >
+                  <AiOutlinePoweroff className="iconOff" />
+                </NavLink>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </Collapse>
+
+      <div className="bg-dark navrow d-flex align-items-center ">
+        <a
+          className="btn btn-primary p-3 m-3 toggle-button"
+          onClick={() => setOpen(!open)}
+          aria-controls="example-collapse-text"
+          aria-expanded={open}
+        >
+          <FaBars />
         </a>
+        <a className="text-decoration-none text-white">{user.username}</a>
       </div>
-      <div
-        className="d-flex justify-content-center bg-dark"
-        style={{ height: "90vh", overflow: "scroll initial", width: "15rem" }}
-      >
-        <ul className="navbar-nav" id="ulCont"
-          style={{ width: "100%" }}>
-          {SidebarData.map((e, index) => {
-            if (index === 0) {
-              return (
-                <li className="nav-item" key={index}>
-                  <a href="#" id={e.title} className="mt-0 active d-flex text-decoration-none bg-white p-3 m-3 text-dark invert-border-radius" onClick={(e) => { setTest(e.currentTarget.id) }}>
-                    <div style={{ marginRight: "1rem" }}>
-                      {e.icon}
-                    </div>
-                    {e.title}
-                  </a>
-                </li>
-              )
-            }
-            return (
-              <li className="nav-item" key={index}>
-                <a href="#" id={e.title} className="d-flex text-decoration-none bg-white p-3 m-3 text-dark invert-border-radius" onClick={(e) => {
-                  setTest(e.currentTarget.id);
-                  console.log(e.currentTarget.id)
-                }}>
-                  <div style={{ marginRight: "1rem" }}>
-                    {e.icon}
-                  </div>
-                  {e.title}
-                </a>
-              </li>
-            )
-          })}
-          <div className="nav-item mt-auto d-flex justify-content-center" >
-            <a href="#" className="d-flex bg-white p-3 m-3 rounded-pill text-decoration-none">
-              <AiOutlinePoweroff style={{ color: "black" }} />
-            </a>
-          </div>
-        </ul>
-      </div>
-    </>
+    </div>
   );
 };

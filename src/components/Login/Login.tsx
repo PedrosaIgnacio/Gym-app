@@ -74,7 +74,6 @@ export const Login = () => {
             >
               ¿Olvidaste tu contraseña?
             </a>
-            {user.username}
           </div>
         </div>
       </div>

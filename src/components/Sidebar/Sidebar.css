@@ -1,8 +1,29 @@
-.invert-border-radius {
-  border-radius: 25px 25px 25px 0px !important;
+.navrow {
+  height: 10vh;
+  width: 100vw;
+  justify-content: space-between;
 }
-
-.active {
-  border-radius: 25px 0px 0px 25px !important;
-  width: 100% !important;
+.navvbar {
+  height: 100vh;
+  width: 15rem;
+  overflow: scroll initial;
+  margin: 0;
+}
+#ulCont {
+  width: 100%;
+}
+.divIcon {
+  margin-right: 1rem;
+}
+.iconOff {
+  color: rgba(var(--bs-dark-rgb));
+}
+.brand {
+  height: 10vh;
+}
+.toggle-button {
+  color: rgba(var(--bs-dark-rgb));
+}
+#Inicio {
+  margin-top: 0.2rem !important;
 }

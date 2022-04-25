@@ -1,5 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useContext } from "react";
 import { Sidebar } from "../Sidebar/Sidebar";
+import UserContext from "../UserContext/UserContext";
 
 interface ILayoutProps {
   children: ReactNode;

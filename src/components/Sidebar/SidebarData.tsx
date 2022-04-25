@@ -27,7 +27,7 @@ export const SidebarData: ISidebarDataItem[] = [
   },
   {
     title: "Cuenta",
-    path: "/misplanes",
+    path: "/cuenta",
     icon: <FaUserAlt style={{ height: "24px", width: "24px" }} />,
     iconClosed: <RiArrowDownSFill />,
     iconOpened: <RiArrowUpSFill />,

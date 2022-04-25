@@ -1,5 +1,6 @@
 import React, { ReactElement, useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Account } from "./components/Account/Account";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Plans } from "./components/Plans/Plans";
@@ -14,6 +15,8 @@ export const AppWrapper = (): ReactElement => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/misplanes" element={<Plans />} />
+          <Route path="/cuenta" element={<Account />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       // <button onClick={() => user.logout()} className="btn btn-outline-dark">
@@ -21,10 +24,6 @@ export const AppWrapper = (): ReactElement => {
       // </button>
     );
   } else {
-    return (
-      <>
-        <Login />
-      </>
-    );
+    return <Login />;
   }
 };
